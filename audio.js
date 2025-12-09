@@ -46,13 +46,10 @@ async function setupMicrophoneInput(audioContext) {
   analyser.smoothingTimeConstant = CONFIG.audio.smoothingTime;
   microphone.connect(analyser);
 
-  // Store stream for cleanup
-  microphone.mediaStream = stream;
-
   // Create reusable buffer for performance (prevents GC pressure)
   state.micDataArray = new Uint8Array(analyser.frequencyBinCount);
 
-  return { microphone, analyser };
+  return { microphone, analyser, stream };
 }
 
 /**
@@ -262,11 +259,12 @@ function setupAudioOutput(audioContext, frequency) {
 async function initAudioWithMicrophone() {
   state.audioContext = createAudioContext();
 
-  const { microphone, analyser } = await setupMicrophoneInput(
+  const { microphone, analyser, stream } = await setupMicrophoneInput(
     state.audioContext,
   );
   state.microphone = microphone;
   state.micAnalyser = analyser;
+  state.micStream = stream;
 
   const audioNodes = setupAudioOutput(
     state.audioContext,
@@ -459,9 +457,9 @@ export async function initAudio() {
     console.log("Ritual vocal system initialized with microphone");
     return true;
   } catch (error) {
-    console.error("Error initializing audio:", error);
-    alert(
-      "Microphone access is needed for the full experience. The app will still work as a tone generator.",
+    console.warn(
+      "Microphone not available, using tone generator mode:",
+      error.message,
     );
 
     initAudioWithoutMicrophone();
@@ -551,11 +549,15 @@ export async function cleanupAudio() {
     }
 
     // Stop microphone stream and disconnect analyser
-    if (state.microphone && state.microphone.mediaStream) {
-      state.microphone.mediaStream.getTracks().forEach((track) => {
+    if (state.micStream) {
+      state.micStream.getTracks().forEach((track) => {
         track.stop();
         console.log("Microphone track stopped");
       });
+      state.micStream = null;
+    }
+
+    if (state.microphone) {
       state.microphone.disconnect();
       state.microphone = null;
     }
