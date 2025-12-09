@@ -11,9 +11,9 @@ const DEFAULTS = {
   maxFreq: 1000,
   chargeRate: 0.03, // Breath intake speed
   depleteRate: 0.015, // Breath release speed
-  threshold: 0.2, // Capacity needed before sound begins
-  maxVolume: 25.0, // Maximum output volume intensity
-  micSensitivity: 30,
+  threshold: 0.1, // Capacity needed before sound begins
+  maxVolume: 4.0, // Maximum output volume intensity
+  micSensitivity: 16,
   vibrato: 3,
   filterQ: 1.0,
   debugMode: false,

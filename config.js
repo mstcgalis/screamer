@@ -12,11 +12,11 @@ export const CONFIG = {
   breathing: {
     chargeRate: 0.03,
     depleteRate: 0.015,
-    threshold: 0.2,
+    threshold: 0.1,
   },
   audio: {
-    maxVolume: 25.0, // Maximum output volume with compression protection (sweet spot before distortion)
-    micSensitivity: 30, // High sensitivity for better microphone response
+    maxVolume: 4.0, // Maximum output volume with compression protection (sweet spot before distortion)
+    micSensitivity: 16, // High sensitivity for better microphone response
     smoothingTime: 0.8,
     fftSize: 256,
     vibrato: 3,
