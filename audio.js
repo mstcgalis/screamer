@@ -194,7 +194,7 @@ function setupAudioOutput(audioContext, frequency) {
 
   // === 6. Mix dry + wet signals ===
   const mixGain = audioContext.createGain();
-  mixGain.gain.value = 1.5; // Moderate boost
+  mixGain.gain.value = 3.0; // Strong boost for louder output
 
   dryGain.connect(mixGain);
   wetGain.connect(mixGain);
@@ -217,13 +217,13 @@ function setupAudioOutput(audioContext, frequency) {
 
   // === 9. Makeup gain (compensate for compression) ===
   const makeupGain = audioContext.createGain();
-  makeupGain.gain.value = 3.5; // Moderate makeup gain
+  makeupGain.gain.value = 8.0; // High makeup gain for louder output
 
   mainGain.connect(makeupGain);
 
   // === 10. Soft limiter (safety net) ===
   const limiter = audioContext.createDynamicsCompressor();
-  limiter.threshold.value = -6; // Gentle limiting threshold
+  limiter.threshold.value = -3; // Higher threshold for louder output
   limiter.knee.value = 6; // Soft knee
   limiter.ratio.value = 12; // Limiting ratio
   limiter.attack.value = 0.003; // Fast attack
