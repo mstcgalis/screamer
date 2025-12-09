@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <title>Plači - Collective Healing Through Sound</title>
+        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <a href="settings.html" id="settingsButton" aria-label="Settings">⚙</a>
+        <button
+            id="testSoundButton"
+            style="display: none"
+            aria-label="Test Sound"
+        >
+            🔊
+        </button>
+
+        <div id="container">
+            <div id="topText">LISTEN</div>
+            <div id="circle">
+                <div id="capacityIndicator"></div>
+            </div>
+            <div id="bottomText">we heal<br />when we scream<br />together</div>
+        </div>
+
+        <script type="module" src="main.js"></script>
+    </body>
+</html>

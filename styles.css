@@ -1,0 +1,155 @@
+/* ============================================================
+   PLAČI - COLLECTIVE HEALING THROUGH SOUND
+   Stylesheet
+   ============================================================ */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Layout */
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap");
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    font-family: "Lora", Georgia, serif;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(45, 10%, 95%);
+    transition: background-color 100ms ease-out;
+}
+
+/* Settings Button */
+#settingsButton {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.75rem;
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    z-index: 1000;
+    transition: color 200ms ease;
+    cursor: pointer;
+}
+
+#settingsButton:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Test Sound Button (Debug Mode Only) */
+#testSoundButton {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-size: 1.75rem;
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    background: none;
+    border: none;
+    z-index: 1000;
+    transition: color 200ms ease;
+    cursor: pointer;
+    padding: 0;
+}
+
+#testSoundButton:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Container */
+#container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Top Text - "LISTEN" */
+#topText {
+    position: absolute;
+    top: 20%;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #000;
+}
+
+/* Circle - Interactive Element */
+#circle {
+    width: 40vw;
+    height: 40vw;
+    border-radius: 50%;
+    background-color: hsl(140, 70%, 60%);
+    opacity: 0.3;
+    transition:
+        transform 100ms ease-out,
+        opacity 100ms ease-out;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Capacity Indicator - Shows breath capacity as circular progress */
+#capacityIndicator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        rgba(255, 255, 255, 0.7) 0deg,
+        rgba(255, 255, 255, 0.7) var(--capacity-angle, 0deg),
+        rgba(0, 0, 0, 0.15) var(--capacity-angle, 0deg),
+        rgba(0, 0, 0, 0.15) 360deg
+    );
+    transform: rotate(-90deg);
+    pointer-events: none;
+}
+
+/* Bottom Text - Tagline */
+#bottomText {
+    position: absolute;
+    bottom: 15%;
+    font-size: 2rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #000;
+    text-align: center;
+    padding: 0 2rem;
+    line-height: 1.2;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    #topText {
+        font-size: 1.75rem;
+    }
+
+    #circle {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    #bottomText {
+        font-size: 1.75rem;
+    }
+}
