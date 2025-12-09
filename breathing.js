@@ -58,10 +58,10 @@ export function depleteBreathCapacity() {
  * visual transforms or audio ramping.
  */
 export function calculateOutputVolume() {
-  // Debug mode override: low test volume to avoid distortion
+  // Debug mode override: moderate test volume
   if (state.debugModeActive) {
-    // Keep debug volume within normalized range
-    return 0.15; // Fixed low volume for clean debug testing
+    // Return 50% of maxVolume for debug testing
+    return 0.5 * CONFIG.audio.maxVolume;
   }
 
   // Guard against invalid breath capacity state
@@ -88,5 +88,6 @@ export function calculateOutputVolume() {
   if (!isFinite(normalized)) normalized = 0;
   normalized = Math.min(1, Math.max(0, normalized));
 
-  return normalized;
+  // Apply maxVolume multiplier for actual loudness control
+  return normalized * CONFIG.audio.maxVolume;
 }
