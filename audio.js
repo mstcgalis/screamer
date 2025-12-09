@@ -191,7 +191,7 @@ function setupAudioOutput(audioContext, frequency) {
 
   // === 6. Mix dry + wet signals ===
   const mixGain = audioContext.createGain();
-  mixGain.gain.value = 3.0; // Strong boost for louder output
+  mixGain.gain.value = 5.0; // Very strong boost for maximum output
 
   dryGain.connect(mixGain);
   wetGain.connect(mixGain);
@@ -214,7 +214,7 @@ function setupAudioOutput(audioContext, frequency) {
 
   // === 9. Makeup gain (compensate for compression) ===
   const makeupGain = audioContext.createGain();
-  makeupGain.gain.value = 8.0; // High makeup gain for louder output
+  makeupGain.gain.value = 12.0; // Very high makeup gain for maximum loudness
 
   mainGain.connect(makeupGain);
 

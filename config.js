@@ -15,8 +15,8 @@ export const CONFIG = {
     threshold: 0.2,
   },
   audio: {
-    maxVolume: 300.0, // Maximum output volume with compression protection (increased for louder output)
-    micSensitivity: 15,
+    maxVolume: 600.0, // Maximum output volume with compression protection (very loud!)
+    micSensitivity: 30, // High sensitivity for better microphone response
     smoothingTime: 0.8,
     fftSize: 256,
     vibrato: 3,
