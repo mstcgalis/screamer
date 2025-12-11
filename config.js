@@ -11,7 +11,7 @@ export const CONFIG = {
   },
   breathing: {
     chargeRate: 0.03,
-    depleteRate: 0.015,
+    depleteRate: 0.003,
     threshold: 0.1,
   },
   audio: {
